@@ -1,0 +1,153 @@
+.ranking {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /deep/ .van-tab--active {
+        color: #1989FA;
+    }
+
+    /deep/ .van-tabs__line {
+        background-color: #1989FA;
+    }
+
+    .page-ranking-wrapper {
+        width: 100%;
+        height: calc(~'100% - 44px');
+        overflow: hidden;
+        background-color: #fff;
+
+    }
+    .ranking-list {
+        height: 100%;
+        .left-nav {
+            width: 80px;
+            height: 585px;
+            padding-top: 10px;
+            position: relative;
+            padding-bottom: 30px;
+            box-sizing: border-box;
+            // background-color: #f5f5f5;
+            overflow-y: auto;
+        }
+
+        .inner-left {
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+            &.current{
+                background-color: #fff;
+                color: #1989FA;
+                font-weight: bold;
+            }
+           
+        }
+        // .inner-left.current{
+        //     background-color: #fff;
+        //     color: #1989FA;
+        //     font-weight: bold;
+        // }
+
+        .right-content {
+            padding: 10px;
+            width: calc(~"100% - 100px");
+            height: 585px;
+            overflow-y: auto;
+        }
+
+        .book-list {
+            width: 100%;
+            //  height: 105px;
+            padding: 8px;
+            box-sizing: border-box;
+
+        }
+
+        .cover {
+            width: 70px;
+            height: 90px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+            overflow: hidden;
+        }
+
+        .right-t {
+            width: calc(~"100% - 80px");
+            margin-left: 10px;
+            height: 90px;
+            // width: 147px;
+        }
+
+        .name span {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 80%;
+            height: 100%;
+            line-height: 23px;
+            color: #333;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 16px;
+            overflow: hidden;
+        }
+
+        .desc {
+            height: 36px;
+            line-height: 18px;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: #8a8a8a;
+        }
+
+        .sku {
+            position: relative;
+            height: 18px;
+            line-height: 18px;
+            color: #8a8a8a;
+        }
+
+        .sku .author {
+            max-width: 50%;
+            margin-right: 15px;
+            font-size: 10px;
+            overflow: hidden;
+            -webkit-transform: scale(.8);
+        }
+
+        .author i {
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: #a3a3a3;
+
+        }
+
+        .tag {
+            position: absolute;
+            right: 0;
+
+        }
+
+        .tag i {
+            display: inline-block;
+            vertical-align: middle;
+            height: 24px;
+            margin-left: 6px;
+            padding: 0 9;
+            line-height: 24px;
+            color: #777;
+            background: #efeff4;
+            font-style: normal;
+            font-size: 8px;
+            -webkit-transform: scale(.8);
+            border-radius: 10px;
+        }
+
+    }
+}

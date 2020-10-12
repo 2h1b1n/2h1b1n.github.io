@@ -1,0 +1,354 @@
+.reading {
+    // background-color: #EEE6DD;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    .reader-content {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .reader-content-details {
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-weight: 400;
+        // color: #333;
+        padding: 0 20px;
+        line-height: 1.5;
+        box-sizing: border-box;
+    }
+
+    .read-inner {
+        line-height: 2;
+        padding: 10px 20px 0;
+        text-align: justify;
+        box-sizing: border-box;
+    
+    }
+    .read-inner >p {
+        font-size: inherit !important;
+        line-height: 1.5;
+        margin: 5px 0;
+        // text-indent: 2em;
+        text-align: justify;
+    }
+   
+    // 显示的菜单栏
+    .top-controll-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        z-index: 21;
+        width: 100%;
+        height: 44px;
+        color: #fff;
+        background-color: rgba(50, 51, 52, .9);
+        transition: all .2s ease;
+    }
+
+     .top-controll-bar .back {
+        position: absolute;
+        width: 60px;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+    }
+
+     .top-controll-bar h1 {
+        width: 70%;
+        height: 100%;
+        margin: 0 auto;
+        line-height: 44px;
+        text-align: center;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: #fff;
+    }
+     .top-controll-bar .back {
+        position: absolute;
+        width: 60px;
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+    }
+     .top-controll-bar .back i {
+        display: inline-block;
+        vertical-align: middle;
+        font-style: normal;
+    }
+     .top-controll-bar .back .icon {
+        width: 15px;
+        height: 44px;
+        background: url('../icons/left-arrow.png') no-repeat;
+        background-size: 125%;
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }
+     .top-controll-bar .menu {
+        position: absolute;
+        width: 60px;
+        color: #fff;
+        right: 0;
+        top: 0;
+        text-align: center;
+        font-size: 12px;
+    }
+
+     .top-controll-bar .menu .icon {
+        width: .4rem;
+        height: 1.17333rem;
+        background: url('../icons/menu.png') no-repeat;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        font-style: normal;
+    }
+
+     .top-controll-bar .menu .drop-down {
+        position: absolute;
+        width: 90px;
+        background: #323334;
+        right: 15px;
+        top: 55px;
+        border-radius: 10px;
+        line-height: 12px;
+    }
+
+     .top-controll-bar .menu .drop-down:before {
+        border-style: solid;
+        border-color: transparent transparent #323334;
+        border-width: 0 8px 6px;
+        content: " ";
+        width: 0;
+        height: 0;
+        top: -5px;
+        right: 6px;
+        position: absolute;
+    }
+
+     .top-controll-bar .menu .drop-down li {
+        height: 30px;
+        border-radius: 10px;
+    }
+
+     .top-controll-bar .menu .drop-down li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 7.5px 10px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #222;
+    }
+
+     .top-controll-bar .menu .drop-down li .menu-icon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-color: #323334;
+    }
+
+    .top-controll-bar .menu .drop-down li:first-of-type .menu-icon {
+        width: 12px;
+        height: 12px;
+        background-image: url('../icons/home.png');
+    }
+
+    .top-controll-bar .menu .drop-down li:nth-of-type(2) .menu-icon {
+        background-image: url('../icons/shelf.png') ;
+    }
+
+    .top-controll-bar .menu .drop-down li:nth-of-type(3) .menu-icon {
+        background-image: url('../icons/detail.png');
+    }
+
+    .top-controll-bar .menu .drop-down li a span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 15px;
+        height: 14px;
+        margin-left: 10px;
+        font-size: 12px;
+        color: #fff;
+        font-style: normal;
+    }
+
+    //底部菜单栏
+     .bottom-controll-panel {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        z-index: 21;
+        width: 100%;
+        height: 170px;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: rgba(50,51,52,.9);
+        transition: all .2s ease;
+    }
+     .bottom-controll-panel .toBookShelf {
+        position: absolute;
+        width: 80px;
+        height: 30px;
+        background: rgba(50,51,52,.9);
+        border-radius: 30px 0 0 30px;
+        color: #fff;
+        font-size: 13px;
+        line-height: 30px;
+        padding-left: 15px;
+        top: -50px;
+        right: 0;
+    }
+     .bottom-controll-panel .item {
+        position: relative;
+        height: 30px;
+        margin-bottom: 20px;
+        font-size: 0;
+    }
+
+    //字体大小
+    .bottom-controll-panel .item .font-btn-w {
+        width: 32px;
+        // font-size: 14px;
+    }
+     .bottom-controll-panel .item .btn {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 14px;
+    }
+     .bottom-controll-panel .item .progress-bar {
+        width: 240px;
+        height: 2px;
+        background: #b2b2b2;
+        border-radius: 1px;
+        margin: 0 15px;
+    }
+ .bottom-controll-panel .item .progress-bar .content-b {
+        height: 2px;
+        display: block;
+        background: #b93221;
+        border-radius: 1px;
+    }
+
+    //模式选择
+     .bottom-controll-panel .item .square {
+        width: 100px;
+        color: #fff;
+        border: 1px solid #535353;
+        border-radius: 10px;
+        &.active {
+            color: #b93221;
+            border: 1px solid #b93221;
+        }
+    }
+     .bottom-controll-panel .item .square:nth-of-type(2){
+        margin: 0 13px;
+    }
+    //底部章节选择
+     .bottom-controll-panel .item:last-child {
+        margin-bottom: 0;
+    }
+    .bottom-controll-panel .item .chapter-btn-w {
+        width:50px;
+        font-size: 15px;
+    }
+   
+    .bottom-controll-panel .item .directory {
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        color: #a8a8a8;
+        font-size: 15px;
+        position: absolute;
+        left: 50%;
+        margin-left: -50px;
+    }
+
+    // 显示章节列表
+    .van-popup{
+        z-index: 1000;
+    }
+    .content {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        position: fixed;
+    }
+    
+    .content .top-bar {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        height: 80px;
+        background: #fff;
+        border-bottom: 1px solid #f2f2f2;
+        padding-left: 17px;
+        z-index: 99;
+        box-sizing: border-box;
+    }
+    .content .top-bar p{
+        color: #333;
+    }
+    .content .top-bar p:first-of-type {
+        font-size: 18px;
+        line-height: 18px;
+        padding: 15px 0 20px;
+        // box-sizing: border-box;
+    }
+    .content .top-bar p:nth-of-type(2) {
+        font-size: 17px;
+        height: 17px;
+        line-height: 17px;
+        color: #999;
+    }
+    
+    .content .chapter-list {
+        position: absolute;
+        width: 100%;
+        height: calc(~'100% - 80px');
+        margin-top: 80px;
+        overflow-y: auto;
+    }
+    .chapter-l {
+        width: 100%;
+        height:100%; 
+    }
+    .content  .chapter-list .chapter-l li {
+        position: relative;
+        height: 50px;
+    }
+    .content  .chapter-list .chapter-l li .title-c {
+        height: 100%;
+        line-height: 50px;
+        margin-left: 20px;
+        padding-right: 35px;
+        border-bottom: 1px solid #f2f2f2;
+        color: #999;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &.current{
+            color: #b93321;
+        }
+    }
+
+    
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <video preload="metadata" autoplay controls src="https://www.runoob.com/try/demo_source/mov_bbb.mp4"></video>
+    <script>
+        var video = document.querySelector("video");
+
+        // video.play()
+        // video.pause()
+
+        console.log(video.autoplay);
+        console.log(video.buffered);
+        console.log(video.duration);
+        // 缓冲段 可能会有多段
+        setTimeout(function () {
+            console.log(video.buffered.start(0), video.buffered.end(0));
+
+            // video.controls = false;
+
+            console.log(video.currentSrc);
+        }, 100);
+
+        // setInterval(function () {
+        //     console.log(video.currentTime);
+        // }, 30);
+
+        video.addEventListener("timeupdate", function () {
+            console.log(video.currentTime);
+        });
+
+        console.log(video.paused);
+
+        video.addEventListener("loadedmetadata", function () {
+            console.log(video.duration);
+        });
+    </script>
+
+    <!-- 当指定的音频/视频的元数据已加载时，会发生 loadedmetadata 事件。
+
+音频/视频的元数据包括：时长、尺寸（仅视频）以及文本轨道。
+
+当音频/视频处于加载过程中时，会依次发生以下事件：
+
+loadstart
+durationchange
+loadedmetadata
+loadeddata
+progress
+canplay
+canplaythrough -->
+</body>
+
+</html>

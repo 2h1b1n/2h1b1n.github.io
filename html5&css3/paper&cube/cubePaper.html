@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立方体&纸牌</title>
+
+</head>
+
+<body>
+    <!-- 纸牌 -->
+    <ul class="paper">
+        <li><img src="./images/pk2.png" alt=""></li>
+        <li><img src="./images/pk3.jpg" alt=""></li>
+    </ul>
+    <style>
+        .paper{
+            border-radius: 12px;
+        }
+        .paper img {
+            width: 310px;
+            height: 441px;
+        }
+
+        ul.paper {
+            width: 310px;
+            height: 441px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            transform: translate(100px, 100px);
+            position: relative;
+            background-color: #ccc;
+        }
+
+        ul.paper li {
+            width: 310px;
+            height: 441px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+
+            /* 过渡属性 */
+            transition: all 1s;
+            /* 设置转换的位置 */
+            transform-origin: left bottom;
+        }
+
+        ul.paper:hover li:nth-of-type(1) {
+            /* 旋转 */
+            transform: rotateZ(15deg);
+        }
+
+        ul.paper:hover li:nth-of-type(2) {
+            /* 旋转 */
+            transform: rotateZ(30deg);
+        }
+    </style>
+
+    <!-- 立方体 -->
+    <ul class="cube">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <style>
+        ul.cube {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 200px;
+            height: 200px;
+            /* background-color: #ccc; */
+            margin: -264px 682px;
+            /* 设置元素偏转35deg */
+            transform: rotate3d(10, 10, 0, 35deg);
+            /* 把元素设置为3d容器 */
+            transform-style: preserve-3d;
+        }
+
+        ul.cube>li {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.8;
+            text-align: center;
+            line-height: 200px;
+        }
+        /* 对li标签进行旋转、位移 */
+        /* 左手 拇指 食指  中指 */
+        /* 建立一个3纬坐标系 */
+        /* X 轴旋转90等 Z轴上下位移 */
+        ul.cube>li:nth-of-type(1) {
+            background-color: red;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        ul.cube>li:nth-of-type(2) {
+            background-color: blue;
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+
+        /* Y 轴旋转90等 Z轴左右位移 */
+        ul.cube>li:nth-of-type(3) {
+            background-color: green;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        ul.cube>li:nth-of-type(4) {
+            background-color: yellow;
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+
+        /* Z轴是正对着眼睛 只需要前后位移 */
+        ul.cube>li:nth-of-type(5) {
+            background-color: orange;
+            transform: translateZ(100px);
+        }
+
+        ul.cube>li:nth-of-type(6) {
+            background-color: purple;
+            transform: translateZ(-100px);
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+.recharge{
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   
+   .page-payLog-wraper{
+       width: 100%;
+       height: calc(~'100% - 44px');
+    //    background: #f4f4f4;
+   }
+   .page-payLog-wraper .payLog-list .li {
+    background-size: 100% 1px;
+    background-image: linear-gradient(180deg,transparent 50%,#dfdfdf 0);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    }
+    .page-payLog-wraper .payLog-list .li {
+        position: relative;
+        height: 40px;
+        padding: 17.5px 15px;
+        // box-sizing: border-box;
+    }
+    .page-payLog-wraper .payLog-list .li .weixin {
+        position: absolute;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: url('../icons/wx.png') no-repeat;
+        background-size: 100%;
+        background-position: 50%;
+    }
+    .page-payLog-wraper .payLog-list .li .right {
+        position: relative;
+        display: inline-block;
+        height: 100%;
+        margin-left: 50px;
+        padding: 20px 0;
+        overflow: hidden;
+    }
+    .page-payLog-wraper .payLog-list .li .right .price {
+        color: #222;
+        margin-top: -20px;
+        font-size: 16px;
+    }
+    .page-payLog-wraper .payLog-list .li .right .time {
+        color: #999;
+    }
+
+    .page-payLog-wraper .payLog-list .li .status {
+        float: right;
+        height: 100%;
+        line-height: 40px;
+        color: #999;
+        font-size: 14px;
+    }
+
+    .page-payLog-wraper .payLog-list .show-more {
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #999;
+    }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="stage">
+        <img class="turntable" src="./images/turntable.png" alt="">
+        <img class="pointer" src="./images/pointer.png" alt="">
+    </div>
+    <style>
+        .stage {
+            width: 650px;
+            height: 600px;
+            background: url('./images/turntable-bg.jpg') no-repeat center;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .stage img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .stage img.turntable {
+            left: 118px;
+            top: 60px;
+            /* transition: all 3s; */
+
+        }
+
+        .stage img.pointer {
+            left: 250px;
+            top: 150px;
+        }
+    </style>
+
+    <script>
+        // 需求 点击 pointer 让 turntable 转 360deg
+        // var x = document.getElementById('xxx')
+        var pointer = document.getElementsByClassName('pointer')[0]
+        var turntable = document.getElementsByClassName('turntable')[0]
+        // 声明中间信息
+        var lottery = {}
+        var canClick = true
+
+        pointer.onclick = function () {
+            // debugger
+
+            if (canClick) {
+                // 改变可点击状态
+                canClick = false
+
+                // 测试
+                // turntable.style.transform = 'rotate(' + 360 / 7 / 2 + 'deg)'
+
+                // 生成随机数 0-99
+                var randomNum = Math.floor(Math.random() * 100)
+                console.log(randomNum)
+
+                // 根据随机数 转换成为 中奖信息
+                if (randomNum < 10) {
+                    // console.log('一等奖')
+                    lottery = {
+                        code: 1,
+                        text: '一等奖'
+                    }
+                } else if (randomNum < 20) {
+                    // console.log('二等奖')
+                    lottery = {
+                        code: 2,
+                        text: '二等奖'
+                    }
+                } else if (randomNum < 30) {
+                    // console.log('三等奖')
+                    lottery = {
+                        code: 3,
+                        text: '三等奖'
+                    }
+                } else if (randomNum < 40) {
+                    // console.log('四等奖')
+                    lottery = {
+                        code: 4,
+                        text: '四等奖'
+                    }
+                } else if (randomNum < 50) {
+                    // console.log('五等奖')
+                    lottery = {
+                        code: 5,
+                        text: '五等奖'
+                    }
+                } else if (randomNum < 60) {
+                    // console.log('六等奖')
+                    lottery = {
+                        code: 6,
+                        text: '六等奖'
+                    }
+                } else {
+                    // console.log('未中奖')
+                    lottery = {
+                        code: 7,
+                        text: '未中奖'
+                    }
+                }
+                console.log(lottery)
+
+                // 转之前 先加上过渡
+                turntable.style.transition = 'all 3s'
+
+                // 根据 中奖编码 转转盘
+                var deg = (360 / 7 * lottery.code) - (360 / 7 / 2) + (360 * 3)
+                turntable.style.transform = 'rotate(' + deg + 'deg)'
+
+
+                // 提示用户
+                setTimeout(function () {
+                    alert(lottery.text)
+                    // 倒回去转的时候不要过度效果  悄悄变
+                    turntable.style.transition = 'all 0s'
+
+                    // 倒回去三圈 确保下一次转的角度一定大于 没转之前
+                    deg = (360 / 7 * lottery.code) - (360 / 7 / 2)
+                    turntable.style.transform = 'rotate(' + deg + 'deg)'
+                    // 初始化 可点击状态
+                    canClick = true
+                }, 3500);
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

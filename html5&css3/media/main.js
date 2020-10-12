@@ -1,0 +1,105 @@
+var playList = [
+    {
+        id: 169185,
+        name: "认真的雪",
+        artists: "薛之谦",
+        picUrl:
+            "https://p2.music.126.net/yWtj0UXRJBCT9YI7csmAcw==/109951164190741294.jpg",
+        playSrc: "https://music.163.com/song/media/outer/url?id=id.mp3",
+    },
+    {
+        id: 5253734,
+        name: "恋爱达人",
+        artists: "罗志祥",
+        picUrl:
+            "https://p1.music.126.net/n4YTVSO7QK1VRQMCEeOPqA==/80264348845281.jpg",
+        playSrc: "https://music.163.com/song/media/outer/url?id=id.mp3",
+    },
+    {
+        id: 277302,
+        name: "爱",
+        artists: "莫文蔚",
+        picUrl:
+            "https://p1.music.126.net/hcY73QYZt36DeGf91euboQ==/18921495602636668.jpg",
+        playSrc: "https://music.163.com/song/media/outer/url?id=id.mp3",
+    },
+];
+
+var list = document.querySelector(".list");
+
+playList.forEach(function (element, index) {
+    var node = document.createElement("li");
+    node.innerText = element.name;
+    node.dataset.id = element.id;
+    // node.dataset.name = element.name;
+
+    list.appendChild(node);
+
+    // 每个li点击切换歌曲
+    node.addEventListener("click", function () {
+        console.log(this.dataset.id);
+        // audio 路径替换
+        var songId = this.dataset.id;
+
+        audio.src =
+            "https://music.163.com/song/media/outer/url?id=" + songId + ".mp3";
+
+        // 根据id查找歌曲对象
+        var n = playList.filter(function (element, index) {
+            return element.id == songId
+        })
+        // console.log(n);
+        document.querySelector('.mask').style.backgroundImage = "url('" + n[0].picUrl+"')"
+        document.querySelector('.glue img').src = n[0].picUrl
+    });
+});
+
+var audio = document.querySelector("audio");
+
+var progress = document.querySelector(".progress input");
+var slider = document.querySelector(".progress .slider");
+
+audio.addEventListener("durationchange", function () {
+    console.log(audio.duration);
+    // 调整input最大值
+    progress.max = audio.duration;
+});
+
+// 播放进行中 当前时间发生变化
+audio.addEventListener("timeupdate", function () {
+    console.log(audio.currentTime);
+    // 调整input 当前位置
+    // progress.value = audio.currentTime
+
+    console.log("inputing", inputing);
+
+    if (inputing) {
+        return;
+    }
+    // 调整slider 当前位置
+    slider.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+});
+
+var inputing = false;
+// input 输入 滑块滑动时
+progress.addEventListener("input", function () {
+    inputing = true;
+    console.log(this.value);
+
+    // 设置slider 滑块位置
+    slider.style.width = (this.value / this.max) * 100 + "%";
+});
+
+progress.addEventListener("change", function () {
+    // 设置 歌曲播放位置
+    audio.currentTime = this.value;
+    inputing = false;
+});
+
+var stage = document.querySelector(".stage");
+audio.addEventListener("play", function () {
+    stage.classList.add("playing");
+});
+audio.addEventListener("pause", function () {
+    stage.classList.remove("playing");
+});

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多动画的轮播图</title>
+    <style>
+        body , ul {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        .wrapper {
+            width: 760px;
+            height: 300px;
+            margin: 100px auto;
+        }
+        .banner {
+            width: 760px;
+            height: 300px;
+        }
+        /* .banner ul {} */
+        .banner ul li {
+            width: 760px;
+            height: 300px;
+            display: none;
+        }
+        .banner ul li.active {
+            display: block;
+        }
+        .banner ul li a {
+            display: block;
+            width: 760px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner ul li a img {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .banner ul li a img:nth-child(3) {
+            left: -760px;
+            z-index: 2;
+        }
+        .banner ul li a img:nth-child(2) {
+            z-index: 3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="banner">
+            <ul>
+                <li class="active">
+                    <a href="javascript:;">
+                        <img src="./images/bg1.jpg" alt="">
+                        <img src="./images/con1.png" alt="">
+                        <img src="./images/text1.png" alt="">
+                    </a>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <img src="./images/bg2.jpg" alt="">
+                        <img src="./images/con2.png" alt="">
+                        <img src="./images/text2.png" alt="">
+                    </a>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <img src="./images/bg3.jpg" alt="">
+                        <img src="./images/con3.png" alt="">
+                        <img src="./images/text3.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    // $ === jQuery   true 
+    // 入口函数
+    jQuery(function(){
+        // 1.0 定义索引值 
+        var index = 0;
+        // 2.0 定时器函数
+        var timer = null;
+        // 定义一个布尔值  判断鼠标是否移入轮播图
+        var bool = false; // 默认false  表示鼠标没有移入轮播图
+        // 3.0 定义自动轮播函数
+        function autoPlay(){
+            // 每次执行定时器函数的时候,设置li > a > img 最后一张图,位置left : -760px
+            $(".banner ul li img:last-child").css({
+                left:-760
+            })
+            // 4.0 判断当前索引值是否超过最大索引值
+            if(index > 2){
+                //5.0 重置索引值 0
+                index = 0;
+            }
+            // 6.0 设置索引值对应的li标签显示
+            $(".banner ul li").eq(index).addClass("active")
+            // 不是索引值对应的li标签隐藏
+            .siblings().removeClass("active");
+            // 7.0 设置人物图片左右移动
+            $(".banner ul li").eq(index).find("img:nth-child(2)").stop().animate({
+                // 7.0.1 
+                left:30
+            },500, function(){
+                // 7.0.2 
+                $(this).animate({
+                    left:0
+                },500)
+            })
+            // 8.0 设置文本图片
+            $(".banner ul li").eq(index).find("img:last-child").stop().animate({
+                left:0
+            },1000,function(){
+                // 根据布尔值  ,鼠标没有移入轮播图,正常自动轮播图
+                if(!bool){
+                    $(this).css({
+                        left:-760
+                    })
+                }else { // 根据布尔值 == true , 鼠标移入轮播图  
+                    $(this).css({
+                        left:0
+                    })
+                }
+            })
+
+            // 9.0 改变索引值 
+            index ++ ;
+
+        }
+        // 10. 初始化的执行切换轮播图
+        autoPlay();
+        // 11.0 执行定时器函数
+        timer = setInterval(autoPlay , 1000);
+        // 12. 鼠标移入停止轮播图
+        $(".banner").hover(function(){
+            // 12.0.1 停止执行定时器函数
+            clearInterval(timer);
+            // 鼠标移入轮播图  设置布尔值为true
+            bool = true;
+        },function(){
+            // 12.0.2 停止执行定时器函数
+            clearInterval(timer);
+            // 12.0.3 继续执行定时器
+            timer = setInterval(autoPlay , 1000);
+            // 鼠标离开轮播图 设置布尔值为false 
+            bool = false;
+        })
+
+    })
+
+</script>

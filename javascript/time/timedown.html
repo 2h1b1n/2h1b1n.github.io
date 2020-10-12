@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM 定时器  日期对象</title>
+    <style>
+        input {
+            width: 500px;
+            height: 50px;
+            display: block;
+        }
+        div {
+            width: 500px;
+            height: 40px;
+            border-bottom: 1px solid #ccc;
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 距离未来某天还有多久 -->
+    <input id="inp" type="text" placeholder="比如: 2020/1/1 00:00:00">
+    <div id="txt" class="txt">
+        未显示时间
+    </div>
+
+    <script>
+
+        // 业务：距离未来某天还有多久时间
+            // Date()  日期对象
+            // 1天  = 24 小时
+            // 1小时 = 60 分钟
+            // 1分钟 = 60 秒
+            // 1秒 = 1000毫秒
+
+            // 1.0 编写一个函数 格式化时间  
+            // 传递一个秒数(seconds) ，返回天数 ，小时 ， 分钟 ， 秒钟
+            function formatTime(seconds){
+                // 格式化时间
+                // 计算剩余的天数
+                var days = Math.floor(seconds/60/60/24);
+                // 计算剩余的小时
+                var hours = Math.floor(seconds/60/60%24);
+                // 计算剩余分钟
+                var mins = Math.floor(seconds%(60*60)/60);
+                // 计算剩余秒数
+                var sec = Math.floor(seconds%60);
+                // 定义字符串拼接时间
+                var html = "还有"+days+"天"+hours+"小时"+mins+"分钟"+sec+"秒钟";
+                //  返回拼接好的时间字符串
+                return html;
+            }
+            
+            // console.log(formatTime(3599))
+            // 2.0 获取输入框 div标签
+            var inp = document.getElementById("inp");
+            var txt = document.getElementById("txt");
+            // 4.0 定时器变量
+            var timer = null;
+
+            // 3.0 onblur 失去焦点事件
+            inp.onblur = function(){
+                // 清除定时器
+                clearInterval(timer);
+                // console.log("触发了事件")
+                // 3.0.1 获取输入框的值
+                var str = this.value;
+                // console.log(str.length);
+                // 3.0.2 判断输入框是否有输入时间
+                if(str.length != 0 ){
+                    // console.log(str)
+                    var endTime = (new Date(str)).getTime();// 未来某一天时间的毫秒值
+                    var startTime = (new Date()).getTime();// 当前系统时间的毫秒值
+                    var totalTime = endTime - startTime;//  未来某一天距离当前系统时间的毫秒数
+                    var s =  totalTime / 1000 ;// 总的秒数
+                    txt.innerText = formatTime(s); //输入失去焦点那一刻，显示倒数时间
+                    // 4.0.1 定时器
+                    timer = setInterval(function(){
+                        // 4.0.2 通过秒数 每隔一秒钟 总秒数减去一秒
+                        s -- ;
+                        // 判断是否还有剩余秒数
+                        if(s == 0 ){
+                            // 停止定时器
+                            clearInterval(timer);
+                            // 终止代码
+                            return ;
+                        }
+                        // 4.0.3 格式化时间
+                        var html2 =  formatTime(s);
+                        console.log(html2);
+                        // 4.0.4 渲染时间
+                        txt.innerText = html2;
+                    },1000)
+                }
+
+            }
+
+
+    
+    
+    
+    </script>
+    
+</body>
+</html>

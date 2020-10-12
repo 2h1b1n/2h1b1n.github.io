@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+  <style>
+    body {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+  <title></title>
+</head>
+
+<body>
+  <output id="showLineWidth">1</output>
+  粗细：<input type="range" id="lineWidth" min="1" max="50" step="1" value="1" onchange="doChangeRange()" />
+  线条颜色：<input type="color" id="lineColor" onchange="doChangeColor()" />
+  &nbsp;&nbsp;橡皮檫：<img src="images/eraser.png" height="30" width="20" id="img">
+  &nbsp;&nbsp;铅笔：<img src="images/qianbi.jpg" id="img2" height="30" width="20">
+  </br></br>
+  <canvas id="mycanvas" width="500" height="300" style="border:black solid 1px">你的浏览器不能显示canvas!</canvas>
+</body>
+<script type="text/javascript" lanague="javascript">
+  var c;
+  var ctx;
+  var started;
+  window.addEventListener("load", init, true);
+
+  function init() {
+    c = document.getElementById("mycanvas");
+    ctx = c.getContext("2d");
+    c.addEventListener("mousedown", doMouseDown, false);
+    c.addEventListener("mousemove", doMouseMove, false);
+    c.addEventListener("mouseup", doMouseUp, false);
+
+  }
+
+  function doMouseDown(event) {
+    var mouseX = event.pageX - this.offsetLeft;
+    var mouseY = event.pageY - this.offsetTop;
+    ctx.beginPath();
+    ctx.moveTo(mouseX, mouseY);
+    started = true;
+  }
+
+  function doMouseMove(event) {
+    if (started) {
+      var mouseX = event.pageX - this.offsetLeft;
+      var mouseY = event.pageY - this.offsetTop;
+      ctx.lineTo(mouseX, mouseY);
+      ctx.stroke();
+    }
+  }
+
+  function doMouseUp(event) {
+    started = false;
+  }
+
+  function doChangeRange() {
+    ctx.lineWidth = document.getElementById("lineWidth").value;
+    document.getElementById("showLineWidth").value = ctx.lineWidth;
+  }
+  // source -over在目标图像上显示原图像
+  function doChangeColor() {
+    ctx.globalCompositeOperation = "source-over";
+    ctx.strokeStyle = document.getElementById("lineColor").value;
+  }
+  // destination-out在源图像外显示目标图像
+  document.getElementById('img').onclick = function () {
+    ctx.globalCompositeOperation = "destination-out";
+  }
+  document.getElementById('img2').onclick = function () {
+    ctx.globalCompositeOperation = "source-over";
+  }
+  // document.getElementById('img2').onclick=function(){ctx.globalCompositeOperation ="destination-over";}
+  // 在源图像上显示目标图像
+</script>
+
+</html>

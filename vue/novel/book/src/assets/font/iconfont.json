@@ -1,0 +1,86 @@
+{
+  "id": "1955838",
+  "name": "vuebook",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1544382",
+      "name": "首页",
+      "font_class": "shouye1",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "736495",
+      "name": "返回 (2)",
+      "font_class": "fanhui2",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "1089289",
+      "name": "返回",
+      "font_class": "buoumaotubiao09",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "8562227",
+      "name": "icon_书架",
+      "font_class": "icon_shujia",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "15085894",
+      "name": "我的书架",
+      "font_class": "wodeshujia",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "609279",
+      "name": "搜索",
+      "font_class": "sousuosearch82",
+      "unicode": "e6d1",
+      "unicode_decimal": 59089
+    },
+    {
+      "icon_id": "15638876",
+      "name": "书",
+      "font_class": "shu",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "16037524",
+      "name": "书",
+      "font_class": "books-copy",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
+      "icon_id": "16037525",
+      "name": "书架",
+      "font_class": "shujia-copy",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "16037526",
+      "name": "分类",
+      "font_class": "fenlei2-copy",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "16037527",
+      "name": "我的",
+      "font_class": "wode-copy-copy",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    }
+  ]
+}

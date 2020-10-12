@@ -1,0 +1,119 @@
+body {
+    height: 100vh;
+    background: #8b828b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stage {
+    width: 500px;
+    .list{
+        background-color: #928492;
+        border-radius: 10px;
+        padding: 10px;
+        li{
+            cursor: pointer;
+            padding-top: 6px;
+        }
+    }
+
+    audio {
+        width: 100%;
+        height: 30px;
+    }
+
+    .card {
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        padding: 20px;
+
+        .mask {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: lightcoral
+                url("https://p2.music.126.net/yWtj0UXRJBCT9YI7csmAcw==/109951164190741294.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px) brightness(0.8) contrast(1.2);
+            transform: scale(2);
+        }
+        // filter: brightness(0.5);
+        .glue {
+            background: red;
+            width: 150px;
+            height: 150px;
+            background: url("./cd.png");
+            background-size: 100%;
+            // margin: 20px;
+
+            animation: myrotate linear 3s infinite;
+            animation-play-state: paused;
+            img {
+                padding: 30px;
+                border-radius: 50%;
+            }
+        }
+        .zz {
+            width: 30px;
+            // background: lightcoral;
+            transform: rotate(-10deg);
+            transform-origin: 14px 7px;
+            position: relative;
+            left: -10px;
+            transition: all 0.3s;
+        }
+        .info {
+            flex: 1;
+            margin-left: 10px;
+            // background: orange;
+            .progress {
+                background: #E6E6E8;
+                position: relative;
+                top: 50px;
+                margin-bottom: 60px;
+                height: 10px;
+                overflow: hidden;
+                border-radius: 20px;
+                input {
+                    width: 100%;
+                    position: relative;
+                    z-index: 1;
+                    opacity: 0;
+                }
+                .slider {
+                    background: #E83C3C;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100px;
+                    z-index: 0;
+                }
+            }
+        }
+    }
+    &.playing {
+        .card {
+            .glue {
+                animation-play-state: running;
+            }
+            .zz {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}
+@keyframes myrotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

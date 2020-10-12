@@ -1,0 +1,106 @@
+body {
+  height: 100vh;
+  background: #8b828b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stage {
+  width: 500px;
+}
+.stage .list {
+  background-color: #928492;
+  border-radius: 10px;
+  padding: 10px;
+}
+.stage .list li {
+  cursor: pointer;
+  padding-top: 6px;
+}
+.stage audio {
+  width: 100%;
+  height: 30px;
+}
+.stage .card {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 20px;
+}
+.stage .card .mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: lightcoral url("https://p2.music.126.net/yWtj0UXRJBCT9YI7csmAcw==/109951164190741294.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.8) contrast(1.2);
+  transform: scale(2);
+}
+.stage .card .glue {
+  background: red;
+  width: 150px;
+  height: 150px;
+  background: url("cd.png");
+  background-size: 100%;
+  animation: myrotate linear 3s infinite;
+  animation-play-state: paused;
+}
+.stage .card .glue img {
+  padding: 30px;
+  border-radius: 50%;
+}
+.stage .card .zz {
+  width: 30px;
+  transform: rotate(-10deg);
+  transform-origin: 14px 7px;
+  position: relative;
+  left: -10px;
+  transition: all 0.3s;
+}
+.stage .card .info {
+  flex: 1;
+  margin-left: 10px;
+}
+.stage .card .info .progress {
+  background: #E6E6E8;
+  position: relative;
+  top: 50px;
+  margin-bottom: 60px;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.stage .card .info .progress input {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+}
+.stage .card .info .progress .slider {
+  background: #E83C3C;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  z-index: 0;
+}
+.stage.playing .card .glue {
+  animation-play-state: running;
+}
+.stage.playing .card .zz {
+  transform: rotate(0deg);
+}
+@keyframes myrotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
